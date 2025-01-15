@@ -26,6 +26,7 @@
 
 #include <float.h>
 #include <time.h>
+#include <unistd.h>
 
 #include "avformat.h"
 #include "avio_internal.h"
