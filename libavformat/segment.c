@@ -419,7 +419,7 @@ static int delete_old_segments(SegmentContext *seg)
 
         // attempt to delete segment
         if (unlink(target_seg_path) != 0) {
-            av_log(segment, AV_LOG_ERROR, "Error deleting old segment %s: %s\n", path, strerror(errno)); // FIXME: deprecation warning
+            av_log(segment, AV_LOG_ERROR, "Error deleting old segment %s: %s\n", target_seg_path, strerror(errno)); // FIXME: deprecation warning
         }
 
         // cleanup
