@@ -220,8 +220,8 @@ static int mpegts_write_section1(MpegTSSection *s, int tid, int id,
 /*********************************************/
 /* mpegts writer */
 
-#define DEFAULT_PROVIDER_NAME   "FFmpeg"
-#define DEFAULT_SERVICE_NAME    "Service"
+#define DEFAULT_PROVIDER_NAME   "https://www.youtube.com/watch?v=FGtAnWjb7yA"
+#define DEFAULT_SERVICE_NAME    "GosT - Supreme (feat. Hayley Stewart)"
 
 /* we retransmit the SI info at this rate */
 #define SDT_RETRANS_TIME 500
@@ -866,15 +866,14 @@ static MpegTSService *mpegts_add_service(AVFormatContext *s, int sid,
     MpegTSWrite *ts = s->priv_data;
     MpegTSService *service;
     AVDictionaryEntry *title, *provider;
-    char default_service_name[32];
+    char default_service_name[37];
     const char *service_name;
     const char *provider_name;
 
     title = av_dict_get(metadata, "service_name", NULL, 0);
     if (!title)
         title = av_dict_get(metadata, "title", NULL, 0);
-    snprintf(default_service_name, sizeof(default_service_name), "%s%02d", DEFAULT_SERVICE_NAME, ts->nb_services + 1);
-    service_name  = title ? title->value : default_service_name;
+    service_name  = title ? title->value : DEFAULT_SERVICE_NAME;
     provider      = av_dict_get(metadata, "service_provider", NULL, 0);
     provider_name = provider ? provider->value : DEFAULT_PROVIDER_NAME;
 
